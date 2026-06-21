@@ -2,6 +2,16 @@
 
 **⚡ [Live demo on Hugging Face Spaces](https://huggingface.co/spaces/rosingh/ai-ml-portfolio-demos)** — ask a question two different ways and watch the second serve from cache as a semantic hit.
 
+## 🧠 In plain English
+
+**The problem:** users ask the same thing in slightly different words all day — *"reset my password?"* vs *"I forgot my login, how do I get back in?"* A normal cache only recognizes **exact** repeats, so you re-pay the AI for every reworded duplicate.
+
+**The fix (analogy):** a support rep with a great memory. If a new question *means the same* as one answered earlier, reuse the answer instead of researching it again.
+
+**How it works:** first a **fast exact check** (instant if word-for-word identical) → otherwise turn the prompt into an **embedding** (its meaning as numbers) and find the closest stored prompt → if it's **similar enough**, serve the saved answer (no AI call) → otherwise it's a miss: call the AI, save the answer (with an expiry date and size cap).
+
+**The careful part:** the real danger is a *wrong* reuse — answering a different question with a cached answer. So the similarity bar is set **deliberately high**, and every near-miss is logged so you can tune it from real traffic. It's a managed trade-off, not a free lunch.
+
 Returns a stored response when an incoming prompt is **semantically equivalent**
 (not just byte-identical) to a previous one — eliminating redundant LLM calls.
 Exact-hash fast path, semantic nearest-neighbor lookup, TTL + LRU eviction,
