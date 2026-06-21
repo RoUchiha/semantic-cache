@@ -1,6 +1,6 @@
 # semcache — Semantic Cache for LLM Calls
 
-**⚡ [Live demo on Hugging Face Spaces](https://huggingface.co/spaces/rosingh/semantic-cache)** — ask a question two different ways and watch the second serve from cache as a semantic hit.
+**⚡ [Live demo on Hugging Face Spaces](https://huggingface.co/spaces/rosingh/ai-ml-portfolio-demos)** — ask a question two different ways and watch the second serve from cache as a semantic hit.
 
 Returns a stored response when an incoming prompt is **semantically equivalent**
 (not just byte-identical) to a previous one — eliminating redundant LLM calls.
